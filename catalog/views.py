@@ -32,8 +32,8 @@ def products_list(request):
     If his input matches with nothing: template will inform user
     that there is no result.
     """
+    form = SearchForm(request.POST)
     if request.method == 'POST':
-        form = SearchForm(request.POST)
         if form.is_valid():
             user_input = form.cleaned_data['search']
             if user_input == '':

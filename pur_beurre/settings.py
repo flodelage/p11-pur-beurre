@@ -15,6 +15,8 @@ from pathlib import Path
 from django.contrib.messages import constants as messages
 from django.conf import global_settings
 
+from dotenv import load_dotenv, find_dotenv
+
 import django_heroku
 
 
@@ -30,13 +32,17 @@ MESSAGE_TAGS = {
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
+load_dotenv(find_dotenv())
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_KEY')
+SECRET_KEY = os.getenv('DJANGO_KEY')
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False if os.environ.get('ENV', 'development') == 'production' else True
+DEBUG = False if os.getenv('ENV') == 'production' else True
 
 ALLOWED_HOSTS = ['.herokuapps.com', 'localhost', '127.0.0.1']
 
@@ -92,10 +98,10 @@ WSGI_APPLICATION = 'pur_beurre.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
         'PORT': '5432',
     }
 }
