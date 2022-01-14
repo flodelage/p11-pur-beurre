@@ -15,7 +15,7 @@ from pathlib import Path
 from django.contrib.messages import constants as messages
 from django.conf import global_settings
 
-from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv
 
 import django_heroku
 
@@ -29,10 +29,10 @@ MESSAGE_TAGS = {
  }
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-load_dotenv(find_dotenv())
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
