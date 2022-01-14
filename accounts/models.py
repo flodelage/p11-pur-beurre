@@ -19,7 +19,7 @@ class Profile(AbstractUser):
     # required fields at the creation
     REQUIRED_FIELDS = ['username', 'password']
     # set as login field / by the way set as required field implicitly
-    USERNAME_FIELD = 'username'
+    USERNAME_FIELD = 'email'
 
     def __str__(self):
         return f"Profil {self.pk}: {self.username} / {self.email}"
