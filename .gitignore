@@ -1,0 +1,11 @@
+
+.DS_Store
+.pytest_cache
+.vscode
+
+env/
+.env
+
+.coverage
+.coveragerc
+coverage_report_html/
